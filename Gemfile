@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in privat_bank_business_api.gemspec
+# Specify your gem's dependencies in pb_api.gemspec
 gemspec
 
 gem "irb"
