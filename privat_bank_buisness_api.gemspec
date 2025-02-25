@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/privat_bank_buisness_api/version"
+require_relative "lib/privat_bank_business_api/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "privat_bank_buisness_api"
-  spec.version = PrivatBankBuisnessApi::VERSION
+  spec.name = "privat_bank_business_api"
+  spec.version = PrivatBankBusinessApi::VERSION
   spec.authors = ["merof"]
   spec.email = ["misha.rosh@gmail.com"]
 

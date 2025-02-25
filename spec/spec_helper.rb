@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "privat_bank_buisness_api"
+require "privat_bank_business_api"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

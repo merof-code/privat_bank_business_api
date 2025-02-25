@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe PrivatBankBuisnessApi do
+RSpec.describe PrivatBankBusinessApi do
   it "has a version number" do
-    expect(PrivatBankBuisnessApi::VERSION).not_to be nil
+    expect(PrivatBankBusinessApi::VERSION).not_to be nil
   end
 
   it "does something useful" do
