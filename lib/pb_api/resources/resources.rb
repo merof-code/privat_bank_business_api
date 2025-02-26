@@ -1,0 +1,2 @@
+module PbAPI::Resources
+end

@@ -34,7 +34,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "dr", "~> 1.0"
+  spec.add_dependency "dry-struct", "~> 1.7"
+  spec.add_dependency "dry-transformer", "~> 1"
+  spec.add_dependency "dry-types", "~> 1.7"
+  spec.add_dependency "faraday", "~> 1.7"
+  spec.add_dependency "faraday_middleware", "~> 1.1"
+  spec.add_dependency "money", "~> 6"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

@@ -3,9 +3,16 @@
 
 require "bundler/setup"
 require "pb_api"
-
+require "date"
+require "./spec/environment"
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
+API_TOKEN_NAME = "pb-token"
+@client = PbAPI::Client.new(api_token: ENV[API_TOKEN_NAME])
+@today = Date.today
+@last_month = @today.prev_month
+@recent = Time.now - 10 * 24 * 3600
+
 require "irb"
-IRB.start(__FILE__)
+binding.irb
