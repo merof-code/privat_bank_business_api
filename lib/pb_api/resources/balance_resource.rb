@@ -9,7 +9,6 @@ module PbAPI::Resources
 
       transformer = PbAPI::Transformers::BalanceTransformer.new
       transformed = transformer.call(raw_data)
-      binding.irb
       # Create an array of Balance models from the transformed hashes
       transformed.map do |balance_hash|
         PbAPI::Models::Balance.new(balance_hash)
