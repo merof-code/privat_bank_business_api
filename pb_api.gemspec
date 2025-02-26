@@ -10,14 +10,14 @@ Gem::Specification.new do |spec|
 
   spec.summary = "api wrapper for privat bank buisness api"
   spec.description = " API docs https://docs.google.com/document/d/e/2PACX-1vTtKvGa3P4E-lDqLg3bHRF6Wi9S7GIjSMFEFxII5qQZBGxuTXs25hQNiUU1hMZQhOyx6BNvIZ1bVKSr/pub"
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage = "https://github.com/merof-code/privat_bank_business_api"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/merof-code/privat_bank_business_api"
+  spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "https://github.com/merof-code/privat_bank_business_api/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
