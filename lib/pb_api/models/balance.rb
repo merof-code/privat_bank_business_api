@@ -2,11 +2,7 @@
 
 module PbAPI
   module Models
-    module Types
-      include Dry.Types()
-    end
-
-    class Balance < Dry::Struct
+    class Balance < BaseStruct
       attribute :account,             Types::String
       attribute :currency,            Types::String
       attribute :counterparty_branch, Types::String

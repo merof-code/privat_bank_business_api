@@ -16,6 +16,8 @@ require_relative "pb_api/base_transformer"
 require_relative "pb_api/resources/balance_resource"
 require_relative "pb_api/transformers/balance_transformer"
 require_relative "pb_api/models/balance"
+require_relative "pb_api/pagination_helper"
+require_relative "pb_api/models/base_struct"
 
 module PbAPI
   class Error < StandardError; end

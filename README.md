@@ -8,18 +8,16 @@ This project uses `dry-transformers` and `dry-schema` to provide proper names fo
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
 ```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+bundle add privat_bank_business_api
 ```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+gem install privat_bank_business_api
 ```
 
 ## Usage
@@ -46,6 +44,10 @@ balances.each do |balance|
   puts "Balance: #{balance.balance_in_money.format}"
 end
 ```
+
+## Feature: Lazy Loading Pagination
+
+All API methods internally use lazy loading to handle paginated results. By leveraging Ruby's Enumerator, the gem fetches data on-demand
 
 ## Development
 
