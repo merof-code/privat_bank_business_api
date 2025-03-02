@@ -12,6 +12,8 @@ module PbAPI::Resources
   # Each endpoint is paginated. The methods in this class return an Enumerator that
   # lazily fetches and yields transactions page by page.
   class TransactionResource < PbAPI::Resource
+    # TODO: make common method private, or refactor it into a parent class. In all classes
+
     ##
     # Executes a paginated request for transactions.
     #
@@ -21,9 +23,9 @@ module PbAPI::Resources
     #
     # @return [Enumerator] an enumerator that yields each transaction as it is fetched.
     def common(uri:, query_params:)
-      PbAPI::PaginationHelper.load(params_hash: query_params, key: "transactions",
-                                   type: PbAPI::Models::Transaction) do |params|
-        get_request(uri, params: params)
+      PbAPI::PaginationHelper
+        .paginate(params_hash: query_params, key: "transactions", type: PbAPI::Models::Transaction) do |params|
+          get_request(uri, params: params)
       end
     end
 
@@ -31,6 +33,13 @@ module PbAPI::Resources
     # Retrieves transactions for a specified date range.
     #
     # This method is used when you need to filter transactions by a start (and optional end) date.
+    # @example
+    #  transactions = PbAPI::Client.transactions.list(
+    #   start_date: Date.new(2025, 2, 1),
+    #   end_date:   Date.new(2025, 2, 28),
+    #   account:    "UA1234567890",
+    #   results_per_page: 50
+    # )
     #
     # @param start_date [Date] the starting date (required).
     # @param end_date [Date, nil] the ending date (optional).

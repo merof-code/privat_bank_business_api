@@ -3,10 +3,11 @@
 module PbAPI::Resources
   class BalanceResource < PbAPI::Resource
     def common(uri, key, start_date, account, end_date)
-      params_hash = form_query(start_date, account, end_date, nil, 20)
+      params_hash = form_query(start_date:, account:, end_date:)
       # Pass a block to handle the HTTP request using your resource's get_request method.
+
       PbAPI::PaginationHelper
-        .load(uri: uri, params_hash: params_hash, key: "balances", type: PbAPI::Models::Balance) do |uri, params|
+        .paginate(params_hash:, key: "balances", type: PbAPI::Models::Balance) do |params|
           get_request(uri, params: params)
         end
     end

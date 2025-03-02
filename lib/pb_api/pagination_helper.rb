@@ -1,7 +1,7 @@
 module PbAPI
   # PaginationHelper provides pagination functionality by yielding individual items
   # from paginated HTTP responses.
-  #
+  # @example
   # Example of usage:
   #   class BalanceResource < PbAPI::Resource
   #     def common(uri, key, start_date, account, end_date)
@@ -34,7 +34,7 @@ module PbAPI
     # @yield [params] Must perform the HTTP request and return a response object.
     # @yieldreturn [Array] The HTTP response with a 'body' method containing a hash.
     # @return [Enumerator] An enumerator yielding individual items.
-    def self.load(params_hash:, key:, type:)
+    def self.paginate(params_hash:, key:, type:)
       Enumerator.new do |yielder|
         loop do
           # The block is used to perform the HTTP request, decoupling the helper from the client.

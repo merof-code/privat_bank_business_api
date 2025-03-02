@@ -17,6 +17,7 @@ module PbAPI
         b.headers["Content-Type"] = "application/json;charset=utf8"
         b.ssl.verify = true
         b.response :json
+        b.response :logger, PbAPI.logger, { headers: false, bodies: false }
       end
     end
 
