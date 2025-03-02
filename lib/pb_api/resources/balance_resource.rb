@@ -7,7 +7,8 @@ module PbAPI::Resources
       # Pass a block to handle the HTTP request using your resource's get_request method.
       PbAPI::PaginationHelper
         .load(uri: uri, params_hash: params_hash, key: "balances", type: PbAPI::Models::Balance) do |uri, params|
-        get_request(uri, params: params)
+          get_request(uri, params: params)
+        end
     end
 
     # Get balance(s)

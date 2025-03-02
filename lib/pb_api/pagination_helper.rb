@@ -28,18 +28,17 @@ module PbAPI
     #
     # See example of usage in the class description.
     #
-    # @param uri [String] The URI to send the HTTP request.
     # @param params_hash [Hash] Query parameters for the HTTP request.
     # @param key [String, Symbol] The key to extract data from the response body.
     # @param type [Class] A Dry::Struct model class used for transforming each item.
-    # @yield [uri, params] Must perform the HTTP request and return a response object.
-    # @yieldreturn [Object] The HTTP response with a 'body' method containing a hash.
+    # @yield [params] Must perform the HTTP request and return a response object.
+    # @yieldreturn [Array] The HTTP response with a 'body' method containing a hash.
     # @return [Enumerator] An enumerator yielding individual items.
-    def self.load(uri:, params_hash:, key:, type:)
+    def self.load(params_hash:, key:, type:)
       Enumerator.new do |yielder|
         loop do
           # The block is used to perform the HTTP request, decoupling the helper from the client.
-          response = yield(uri, params_hash)
+          response = yield(params_hash)
           processed = from_response(response_body: response.body, key: key, type: type)
           processed.data.each { |item| yielder << item }
           params_hash[:followId] = processed.next_page_id

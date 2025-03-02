@@ -11,7 +11,6 @@ module PbAPI
       @stubs = stubs
     end
 
-
     def connection
       @connection ||= Faraday.new(BASE_URL) do |b|
         b.headers["token"] = @api_token
@@ -21,8 +20,16 @@ module PbAPI
       end
     end
 
+    # Returns a new instance of PbAPI::Resources::BalanceResource for handling balance-related API operations.
+    # @return [PbAPI::Resources::BalanceResource] The balance resource client.
     def balance
       PbAPI::Resources::BalanceResource.new(self)
+    end
+
+    # Returns a new instance of PbAPI::Resources::TransactionResource for handling transaction-related API operations.
+    # @return [PbAPI::Resources::TransactionResource] The transaction resource client.
+    def transactions
+      PbAPI::Resources::TransactionResource.new(self)
     end
   end
 end
