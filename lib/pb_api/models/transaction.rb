@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PbAPI
   module Models
     # Transaction model
@@ -80,7 +82,7 @@ module PbAPI
       attribute :reference_number, Types::String
 
       # Час проведення (HH:MM) / Transaction time (HH:MM)
-      attribute :valuation_time , Types::JSON::Time
+      attribute :valuation_time, Types::JSON::Time
 
       # Дата і час валютування (дд.мм.рррр HH:MM:SS) / Valuation date and time (dd.mm.yyyy HH:MM:SS)
       attribute :valuation_date_time, Types::Params::DateTime
@@ -99,7 +101,7 @@ module PbAPI
 
       MONEY_FIELDS = %i[
         amount amount_uah
-      ]
+      ].freeze
 
       MONEY_FIELDS.each do |field|
         define_method("#{field}_money") do

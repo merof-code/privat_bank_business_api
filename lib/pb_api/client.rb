@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 module PbAPI
+  # main entry point for the gem
+  # see #balances. #transactions
   class Client
     BASE_URL = "https://acp.privatbank.ua/api/"
     attr_reader :api_token, :adapter

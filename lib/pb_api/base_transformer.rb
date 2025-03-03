@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module PbAPI
+  # transformer methods here
   class BaseTransformer < Dry::Transformer::Pipe
     import Dry::Transformer::HashTransformations
     import Dry::Transformer::ArrayTransformations

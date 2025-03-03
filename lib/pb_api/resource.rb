@@ -1,6 +1,8 @@
+# frozen_string_literal: true
 # typed: true
 
 module PbAPI
+  # internal
   class Resource
     DATE_FORMAT_STRING = "%d-%m-%Y"
     attr_reader :client
@@ -85,9 +87,8 @@ module PbAPI
         raise Error, "Your request exceeded the API rate limit. #{response.body["message"]}"
       when 500
         raise Error, "We were unable to perform the request due to server-side problems. #{response.body["message"]}"
-      when 503
-        raise Error,
-              "You have been rate limited for sending more than 20 requests per second. #{response.body["message"]}"
+      else
+        raise Error, response.body["message"] unless response.status == 200
       end
 
       response

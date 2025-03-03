@@ -24,13 +24,11 @@ require_relative "pb_api/transformers/transaction_transformer"
 require_relative "pb_api/models/transaction"
 require_relative "pb_api/pagination_helper"
 
-
+# Main entry point for the gem, use client = PbAPI::Client.new(api_token: "token") to start using the API.
 module PbAPI
   class Error < StandardError; end
 
   def self.logger
-    @@logger ||= begin
-      base_logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT, progname: 'PbApi')
-    end
+    @@logger ||= defined?(Rails) ? Rails.logger : Logger.new($stdout, progname: "PbApi") # rubocop:disable Style/ClassVars
   end
 end

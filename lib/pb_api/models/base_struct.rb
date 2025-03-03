@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module PbAPI
   module Models
-
     # BaseStruct is a parent class for all models that require a transformer.
     # It dynamically infers the transformer class based on the name of the child class.
     #

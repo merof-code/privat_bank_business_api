@@ -1,7 +1,9 @@
+# frozen_string_literal: true
 # typed: true
 
 module PbAPI
   module Models
+    # balance model, see api docs for more info (readme)
     class Balance < BaseStruct
       attribute :account,             Types::String
       attribute :currency,            Types::String
@@ -66,7 +68,8 @@ module PbAPI
       # For each monetary field, define a method that returns a Money object.
       MONEY_FIELDS.each do |field|
         define_method("#{field}_money") do
-          # Choose the currency based on the field name: if it ends with _uah, use "UAH", otherwise use the model's currency.
+          # Choose the currency based on the field name: if it ends with _uah, use "UAH",
+          # otherwise use the model's currency.
           currency_to_use = field.to_s.end_with?("_uah") ? "UAH" : currency
           Money.from_amount(public_send(field), currency_to_use)
         end

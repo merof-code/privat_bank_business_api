@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PbAPI
   # PaginationHelper provides pagination functionality by yielding individual items
   # from paginated HTTP responses.
@@ -43,8 +45,8 @@ module PbAPI
           processed = from_response(response_body: response.body, key: key, type: type)
           processed.data.each { |item| yielder << item }
           break unless processed.next_page_exists && processed.next_page_id != last_page_id
-          last_page_id = processed.next_page_id
-          params_hash[:followId] = processed.next_page_id
+
+          last_page_id = params_hash[:followId] = processed.next_page_id
         end
       end
     end

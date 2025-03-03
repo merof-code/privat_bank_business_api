@@ -1,4 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require "spec_helper"
 
 RSpec.describe PbAPI::Resources::BalanceResource do
   it "retrieves account info, transforms fields correctly, and exposes money methods" do

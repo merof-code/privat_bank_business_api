@@ -1,4 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require "spec_helper"
 
 RSpec.describe PbAPI::Resources::TransactionResource do
   it "retrieves transaction info, transforms fields correctly, and exposes money methods" do
@@ -16,7 +18,7 @@ RSpec.describe PbAPI::Resources::TransactionResource do
     expect(tx).to be_a(PbAPI::Models::Transaction)
 
     # Check transformed fields.
-    expect(tx.recipient_code).to            eq("00000000")
+    expect(tx.recipient_code).to eq("00000000")
     expect(tx.recipient_bank_code).to         eq("00000000")
     expect(tx.recipient_account).to           eq("UA2630000000000000000000000000")
     expect(tx.recipient_name).to              eq("Couterparty name")
