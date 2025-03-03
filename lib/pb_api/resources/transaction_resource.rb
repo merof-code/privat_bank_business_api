@@ -50,9 +50,9 @@ module PbAPI::Resources
     # @return [Enumerator] an enumerator that yields transaction objects.
     def list(start_date:, end_date: nil, account: nil, next_page_id: nil, results_per_page: 20)
       query_params = form_query(
-        start_date: start_date,
-        end_date: end_date,
-        account: account,
+        start_date:,
+        end_date:,
+        account:,
         follow_id: next_page_id,
         limit: results_per_page
       )

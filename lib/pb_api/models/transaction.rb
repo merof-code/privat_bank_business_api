@@ -80,7 +80,7 @@ module PbAPI
       attribute :reference_number, Types::String
 
       # Час проведення (HH:MM) / Transaction time (HH:MM)
-      attribute :valuation_time # , Types::Params::Time
+      attribute :valuation_time , Types::JSON::Time
 
       # Дата і час валютування (дд.мм.рррр HH:MM:SS) / Valuation date and time (dd.mm.yyyy HH:MM:SS)
       attribute :valuation_date_time, Types::Params::DateTime

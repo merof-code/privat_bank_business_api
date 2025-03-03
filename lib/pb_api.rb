@@ -18,6 +18,10 @@ require_relative "pb_api/models/base_struct"
 require_relative "pb_api/resources/balance_resource"
 require_relative "pb_api/transformers/balance_transformer"
 require_relative "pb_api/models/balance"
+
+require_relative "pb_api/resources/transaction_resource"
+require_relative "pb_api/transformers/transaction_transformer"
+require_relative "pb_api/models/transaction"
 require_relative "pb_api/pagination_helper"
 
 

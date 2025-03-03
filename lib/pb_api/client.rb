@@ -23,7 +23,7 @@ module PbAPI
 
     # Returns a new instance of PbAPI::Resources::BalanceResource for handling balance-related API operations.
     # @return [PbAPI::Resources::BalanceResource] The balance resource client.
-    def balance
+    def balances
       PbAPI::Resources::BalanceResource.new(self)
     end
 
