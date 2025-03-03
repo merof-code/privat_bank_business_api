@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    privat_bank_business_api (0.2.0)
+    privat_bank_business_api (0.2.1)
       dry-struct (~> 1.7)
       dry-transformer (~> 1)
       dry-types (~> 1.7)
