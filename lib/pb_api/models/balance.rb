@@ -31,13 +31,37 @@ module PbAPI
       # Boolean attribute
       attribute :final_balance, Types::Bool
 
+      # @!method balance_in_money
+      #   @return [Money] Returns a Money object for balance_in using the model's currency.
+      #
+      # @!method balance_in_uah_money
+      #   @return [Money] Returns a Money object for balance_in_uah using "UAH" as currency.
+      #
+      # @!method balance_out_money
+      #   @return [Money] Returns a Money object for balance_out using the model's currency.
+      #
+      # @!method balance_out_uah_money
+      #   @return [Money] Returns a Money object for balance_out_uah using "UAH" as currency.
+      #
+      # @!method turnover_debt_money
+      #   @return [Money] Returns a Money object for turnover_debt using the model's currency.
+      #
+      # @!method turnover_debt_uah_money
+      #   @return [Money] Returns a Money object for turnover_debt_uah using "UAH" as currency.
+      #
+      # @!method turnover_cred_money
+      #   @return [Money] Returns a Money object for turnover_cred using the model's currency.
+      #
+      # @!method turnover_cred_uah_money
+      #   @return [Money] Returns a Money object for turnover_cred_uah using "UAH" as currency.
+
       # List of monetary attribute names.
       MONEY_FIELDS = %i[
         balance_in balance_in_uah
         balance_out balance_out_uah
         turnover_debt turnover_debt_uah
         turnover_cred turnover_cred_uah
-      ]
+      ].freeze
 
       # For each monetary field, define a method that returns a Money object.
       MONEY_FIELDS.each do |field|

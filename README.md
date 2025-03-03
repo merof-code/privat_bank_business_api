@@ -6,7 +6,30 @@ API documentation can be found [here](https://docs.google.com/document/d/e/2PACX
 
 This project uses `dry-transformers` and `dry-schema` to provide proper names for API fields. See the model files in the `/models` directory and the mapping from the original fields in the `/transformers` directory. For example, see the [balance transformer](lib/pb_api/transformers/balance_transformer.rb) and [balance model](lib/pb_api/models/balance.rb).
 
+## Money Field Mappings
+
+Certain fields in the API responses can be handled as Money using the Money gem. These fields are available in various formats depending on the context. Below are some examples:
+
+### Balances
+- **Standard Fields:**
+  - `balance_in` and `balance_in_uah`
+  - `balance_out` and `balance_out_uah`
+  - `turnover_debt` and `turnover_debt_uah`
+  - `turnover_cred` and `turnover_cred_uah`
+- **Money Gem Fields:**  
+  The same fields may also appear with an additional `_money` suffix (e.g., `balance_in_money`), providing a Money-formatted version.
+
+### Transactions
+- **Standard Amount Fields:**
+  - `money_amount_uah`
+  - `money_amount`
+- **Money Gem Fields:**
+  - `amount_uah_money`
+  - `amount_money`
+
 ## Installation
+
+Follow the installation instructions provided in the main guide to add and use the gem in your application.
 
 Install the gem and add to the application's Gemfile by executing:
 
@@ -36,7 +59,7 @@ today = Date.today
 last_month = today.prev_month
 
 # Fetch the list of balances
-balances = client.balance.list(last_month)
+balances = client.balance.list(start_date: last_month)
 
 # Print the account and balance information
 balances.each do |balance|
@@ -48,6 +71,10 @@ end
 ## Feature: Lazy Loading Pagination
 
 All API methods internally use lazy loading to handle paginated results. By leveraging Ruby's Enumerator, the gem fetches data on-demand
+
+## Logging
+
+PbAPI's has configurable logging logging is configured in [pb_api.rb](./lib/pb_api.rb). The logger uses Rails.logger if available, otherwise defaults to a standard Ruby Logger writing to STDOUT with a custom formatter that includes abbreviated severity, a timestamp with microseconds, and process details.
 
 ## Development
 
@@ -61,23 +88,16 @@ This project includes a development container configuration. To use it, you need
 
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/merof-code/privat_bank_business_api)
 
-### API Access Configuration for bin/console
+
+
+### Using bin/console
+
 
 To use the API from the interactive console (`bin/console`), you need to add your own API key. Create a file named `environment.rb` in the root directory and add your API key there. You can use the provided `environment.sample.rb` as a template by renaming it to `environment.rb` and replacing the placeholder with your actual API key.
 
 ```ruby
 # environment.rb
 ENV['API_TOKEN'] = 'your_api_key_here'
-```
-
-### Using bin/console
-
-The `bin/console` script provides an interactive Ruby shell (IRB) preloaded with your gem's code and dependencies. This allows you to experiment with the code and test API interactions.
-
-To start the console, run:
-
-```bash
-bin/console
 ```
 
 Once inside the console, you can use the `@client` object to interact with the API. For example, to list balances:

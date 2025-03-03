@@ -18,6 +18,7 @@ module PbAPI
         b.ssl.verify = true
         b.response :json
         b.response :logger, PbAPI.logger, { headers: false, bodies: false }
+        b.adapter @adapter, @stubs
       end
     end
 

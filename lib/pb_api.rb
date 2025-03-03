@@ -30,12 +30,7 @@ module PbAPI
 
   def self.logger
     @@logger ||= begin
-      base_logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
-      base_logger.formatter = proc do |severity, datetime, progname, msg|
-        formatted_time = datetime.strftime("%Y-%m-%dT%H:%M:%S.%6N")
-        "#{severity[0]}, [#{formatted_time} ##{Process.pid} PbAPI]  #{severity} -- #{msg}\n"
-      end
-      base_logger
+      base_logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT, progname: 'PbApi')
     end
   end
 end

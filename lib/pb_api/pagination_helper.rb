@@ -36,13 +36,15 @@ module PbAPI
     # @return [Enumerator] An enumerator yielding individual items.
     def self.paginate(params_hash:, key:, type:)
       Enumerator.new do |yielder|
+        last_page_id = 0
         loop do
           # The block is used to perform the HTTP request, decoupling the helper from the client.
           response = yield(params_hash)
           processed = from_response(response_body: response.body, key: key, type: type)
           processed.data.each { |item| yielder << item }
+          break unless processed.next_page_exists && processed.next_page_id != last_page_id
+          last_page_id = processed.next_page_id
           params_hash[:followId] = processed.next_page_id
-          break unless processed.next_page_exists
         end
       end
     end
