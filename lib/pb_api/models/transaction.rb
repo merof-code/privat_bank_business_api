@@ -94,7 +94,7 @@ module PbAPI
       attribute :transaction_type, Types::String
 
       # Референс платежу сервісу / Service payment reference
-      attribute :service_reference, Types::String
+      attribute :service_reference, Types::String.optional
 
       # Технічний ідентифікатор транзакції / Technical transaction ID
       attribute :technical_id, Types::String
